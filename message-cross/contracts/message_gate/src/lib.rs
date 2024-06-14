@@ -49,8 +49,8 @@ pub enum AccError {
     InvalidContext = 5,
 }
 
-const DISPATCHMESSAGE: Symbol = symbol_short!("DISPATCHMESSAGE");
-const RECEIVEMESSAGE: Symbol = symbol_short!("RECEIVEMESSAGE");
+const DISPATCHMESSAGE: Symbol = symbol_short!("DISPATCH_");
+const RECEIVEMESSAGE: Symbol = symbol_short!("_RECEIVE_");
 
 #[contractimpl]
 impl MessageGateContract {
@@ -68,7 +68,7 @@ impl MessageGateContract {
 
 
 
-        env.events().publish((DISPATCHMESSAGE), DisMessage {toChainId, to, data});
+        env.events().publish(DISPATCHMESSAGE, DisMessage {toChainId, to, data});
 
     }
     pub fn receiveMessage(env: Env, token: Address) -> Result<(), AccError>{
