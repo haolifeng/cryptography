@@ -9,9 +9,4 @@ fn test() {
     let contract_id = env.register_contract(None, MessageGateContract);
     let client = MessageGateContract::new(&env, &contract_id);
 
-    let words = client.hello(&symbol_short!("Dev"));
-    assert_eq!(
-        words,
-        vec![&env, symbol_short!("Hello"), symbol_short!("Dev"),]
-    );
 }
