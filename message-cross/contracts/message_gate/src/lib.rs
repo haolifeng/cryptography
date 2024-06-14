@@ -66,7 +66,9 @@ impl MessageGateContract {
     }
     pub fn dispatchMessage(env:Env,toChainId: u64, to: Bytes, data: Bytes) {
 
-        env.events().publish((DISPATCHMESSAGE))
+
+
+        env.events().publish((DISPATCHMESSAGE), DisMessage {toChainId, to, data});
 
     }
     pub fn receiveMessage(env: Env, token: Address) -> Result<(), AccError>{
