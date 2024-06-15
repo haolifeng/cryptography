@@ -51,9 +51,8 @@ class SorobanClient {
                             "contractIds": [
                                 contractsId
                             ],
-                            "topics": [
-                                [topics]
-                            ]
+
+
                         }
                     ],
                     "pagination": {
@@ -69,6 +68,7 @@ class SorobanClient {
             });
             if(res && res.data){
                 this.logger.debug('res.data is: ', res.data);
+                return res.data;
 
 
             }

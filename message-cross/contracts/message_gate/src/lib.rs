@@ -70,7 +70,9 @@ impl MessageGateContract {
 
 
         let event_msg = DisMessage {to_chain_id, to, data};
-        env.events().publish((DISPATCHMESSAGE,symbol_short!("dispatch")),event_msg );
+        env.events().publish((DISPATCHMESSAGE,symbol_short!("tochainid")),to_chain_id );
+        env.events().publish((DISPATCHMESSAGE,symbol_short!("to")),to );
+        
 
     }
     pub fn receive_message(env: Env, token: Address) -> Result<u64, AccError>{
