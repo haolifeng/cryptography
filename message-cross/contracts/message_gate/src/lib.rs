@@ -71,7 +71,7 @@ impl MessageGateContract {
         env.events().publish((DISPATCHMESSAGE,symbol_short!("dispatch")),event_msg );
 
     }
-    pub fn receive_message(env: Env, token: Address) -> Result<(), AccError>{
+    pub fn receive_message(env: Env, token: Address) -> Result<u64, AccError>{
         // The current contract address is the account contract address and has
         // the same semantics for `require_auth` call as any other account
         // contract address.
@@ -80,7 +80,7 @@ impl MessageGateContract {
         // user-side verification.
         env.current_contract_address().require_auth();
 
-        Ok(())
+        Ok(19)
 
     }
 }
