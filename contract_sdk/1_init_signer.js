@@ -6,7 +6,9 @@ const {
     TransactionBuilder,
     Networks,
     BASE_FEE,
-    XdrLargeInt
+    XdrLargeInt,
+    Address,
+    nativeToScVal
 } = require("@stellar/stellar-sdk");
 
 const run = async () => {
@@ -17,14 +19,26 @@ const run = async () => {
     const sourceKeypair = Keypair.fromSecret(
         keypair.secret
     );
+    let admin = new Address(config.adminKeyPair.publicKey);
+    let user1 = new Address(config.user1KeyPair.publicKey);
 
-    let signers = [config.adminKeyPair.publicKey, config.user1KeyPair.publicKey];
+    let signers;
+    if(admin > user1) {
+        signers = [user1.toBuffer(), admin.toBuffer()]
+    } else{
+        signers = [admin.toBuffer(), user1.toBuffer()]
+    }
+
+
+
+
+
 
     const sourceAccount = await server.getAccount(sourceKeypair.publicKey());
     let builtTransaction = new TransactionBuilder(sourceAccount, {
         fee: BASE_FEE,
         networkPassphrase: Networks.TESTNET,
-    }).addOperation(contract.call("init",signers)).setTimeout(30).build();
+    }).addOperation(contract.call("init",nativeToScVal(signers))).setTimeout(30).build();
 
     console.log(`builtTransaction=${builtTransaction.toXDR()}`);
 

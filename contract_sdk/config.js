@@ -9,6 +9,6 @@ let config = {
     },
     horizon_testUrl:"https://horizon-testnet.stellar.org/",
     soroban_testUrl:"https://soroban-testnet.stellar.org:443",
-    msgCrossScAddr:'CDYLLD464Y7OFJH7KP6ZSVRDKOWULSUN5JOI4VXZO42ZNS4XNITTOG3C',
+    msgCrossScAddr:'CCM6HOFSLKEPPVREYL37OSXGOILEA3SYO6T4UWRIX6CH4BHA7TVPZVNO',
 }
 module.exports = config;

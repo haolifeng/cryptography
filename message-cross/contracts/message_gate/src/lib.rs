@@ -54,6 +54,8 @@ const RECEIVEMESSAGE: Symbol = symbol_short!("_RECEIVE_");
 
 #[contractimpl]
 impl MessageGateContract {
+
+
     pub fn init(env: Env, signers: Vec<BytesN<32>>) {
         // In reality this would need some additional validation on signers
         // (deduplication etc.).
