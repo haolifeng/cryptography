@@ -19,7 +19,7 @@ pub struct AccSignature {
 #[contracttype]
 #[derive(Clone)]
 pub struct DisMessage {
-    pub toChainId: u64,
+    pub to_chain_id: u64,
     pub to: Bytes,
     pub data: Bytes
 }
@@ -64,11 +64,11 @@ impl MessageGateContract {
             .instance()
             .set(&DataKey::SignerCnt, &signers.len());
     }
-    pub fn dispatch_message(env:Env,toChainId: u64, to: Bytes, data: Bytes) {
+    pub fn dispatch_message(env:Env,to_chain_id: u64, to: Bytes, data: Bytes) {
 
 
-        let eventMsg = DisMessage {toChainId, to, data};
-        env.events().publish((DISPATCHMESSAGE,symbol_short!("dispatch")),eventMsg );
+        let event_msg = DisMessage {to_chain_id, to, data};
+        env.events().publish((DISPATCHMESSAGE,symbol_short!("dispatch")),event_msg );
 
     }
     pub fn receive_message(env: Env, token: Address) -> Result<(), AccError>{
