@@ -8,6 +8,7 @@ let config = {
         secret:  'SBB6QE4U52YLJFYFCJDXSH3WTPOBGD25OPWNSQ2S4CQJ53IQ5TQIYS7R'
     },
     horizon_testUrl:"https://horizon-testnet.stellar.org/",
-    soroban_testUrl:"https://soroban-testnet.stellar.org",
+    soroban_testUrl:"https://soroban-testnet.stellar.org:443",
+    msgCrossScAddr:'CDYLLD464Y7OFJH7KP6ZSVRDKOWULSUN5JOI4VXZO42ZNS4XNITTOG3C',
 }
 module.exports = config;
