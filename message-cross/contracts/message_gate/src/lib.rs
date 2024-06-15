@@ -64,14 +64,14 @@ impl MessageGateContract {
             .instance()
             .set(&DataKey::SignerCnt, &signers.len());
     }
-    pub fn dispatchMessage(env:Env,toChainId: u64, to: Bytes, data: Bytes) {
+    pub fn dispatch_message(env:Env,toChainId: u64, to: Bytes, data: Bytes) {
 
 
-
-        env.events().publish(DISPATCHMESSAGE, DisMessage {toChainId, to, data});
+        let eventMsg = DisMessage {toChainId, to, data};
+        env.events().publish((DISPATCHMESSAGE,symbol_short!("dispatch")),eventMsg );
 
     }
-    pub fn receiveMessage(env: Env, token: Address) -> Result<(), AccError>{
+    pub fn receive_message(env: Env, token: Address) -> Result<(), AccError>{
         // The current contract address is the account contract address and has
         // the same semantics for `require_auth` call as any other account
         // contract address.
@@ -80,7 +80,7 @@ impl MessageGateContract {
         // user-side verification.
         env.current_contract_address().require_auth();
 
-        OK(())
+        Ok(())
 
     }
 }
